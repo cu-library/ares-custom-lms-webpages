@@ -12,7 +12,7 @@ function ariaAlert(message) {
     ariaAlertDiv.text(message);
 }
 
-function GetSemesterStartStop(semesterName) {   
+function GetSemesterStartStop(semesterName) {
     $.ajax({
         method: "GET",
         url: "ares.dll",
@@ -45,13 +45,13 @@ function DeleteAlert(alertID) {
     .done(function (data) {
         var code = $(data).find("araj_code");
         var removedAlertId = $(data).find("alertid");
-        
+
         if ((typeof code !== "undefined") && (removedAlertId != "undefined")) {
             if (code.text() === "1") {
-                //This will replace the Alert div with text                
+                //This will replace the Alert div with text
                 //$("#alert" + alertID).html("Alert deleted");
 
-                //Uncomment to hide the alert that was deleted                
+                //Uncomment to hide the alert that was deleted
                 //$("#alert" + alertID).hide();
 
                 //This will make the alert message appear to slide up and disappear
@@ -62,13 +62,13 @@ function DeleteAlert(alertID) {
 }
 
 function ToggleHotList(obj,Action) {
-    var actionType = 782; //Add to hot list    
+    var actionType = 782; //Add to hot list
     if (Action == 'del') {
-        actionType = 783;        
+        actionType = 783;
     }
 
     $("input[name^='HotList']:checked").each(function () {
-        var itemId = $(this).attr("name").replace("HotList", "");        
+        var itemId = $(this).attr("name").replace("HotList", "");
         $.ajax({
             method: "GET",
             url: "ares.dll",
@@ -81,7 +81,7 @@ function ToggleHotList(obj,Action) {
             var hotListItemId = $(data).find("itemid");
 
             if ((typeof code !== "undefined") && (hotListItemId != "undefined")) {
-                if (code.text() === "1") {                    
+                if (code.text() === "1") {
 
                     var actionMessage = "";
                     if ($(data).find("hotlistaction").text() == "del") {
@@ -109,11 +109,11 @@ function GetName(Username) {
         var code = $(data).find("araj_code");
         var user = $(data).find("user");
 
-        if ((typeof code !== "undefined") && (typeof user !== "undefined")) { 
+        if ((typeof code !== "undefined") && (typeof user !== "undefined")) {
             if (code.text() === "1") {
                 var firstName = $(user).find("firstname").text();
                 var lastName = $(user).find("lastname").text();
-                
+
                 $("#CourseInstructor").val(lastName + ', ' + firstName);
             }
         }
@@ -144,10 +144,10 @@ function checkUniqueUsername(Username) {
 }
 
 $(function() {
-    // 
+    //
     // Sets up state management for the getNewLoanPeriods function, then assigns the getNewLoanPeriods function.
-    // 
-    
+    //
+
     if ($('#PickupLocation').length <= 0) {
         return;
     }
@@ -171,31 +171,31 @@ $(function() {
         //     - 1 loan period option populates a hidden input tag
         //     - Otherwise, a select tag is populated with the available options
         //
-        
+
         pickupLocation = $(this).val();
-        
+
         $.ajax({
             method: 'GET',
             url: 'ares.dll',
-            data: { action: 70, type: 785, PickupLocation: pickupLocation },
+            data: { action: 70, type: 785, PickupLocation: PickupLocation, LoanPeriod: $("#LoanPeriod").val() },
             datatype: 'xml'
         })
         .done(function (data) {
 
             var code = $(data).find('araj_code');
-            
+
             if (typeof code === 'undefined' || code.text() !== '0') {
                 return;
             }
 
             var newLoanPeriods = $(data).find('lp_options');
-            
+
             if (typeof newLoanPeriods === 'undefined') {
                 return;
             }
-                        
+
             $('#LoanPeriodDiv').empty();
-            
+
             var newLoanPeriodOptions = $.parseHTML(newLoanPeriods.text());
             var enabledOptions = $(newLoanPeriodOptions).not(':disabled');
             var loanPeriodControlTemplate;
@@ -215,7 +215,7 @@ $(function() {
                 ariaAlert('The loan periods have been updated for the selected pickup location.');
             }
 
-            $('#LoanPeriodDiv').append(loanPeriodControlTemplate);    
+            $('#LoanPeriodDiv').append(loanPeriodControlTemplate);
         });
     });
 });
