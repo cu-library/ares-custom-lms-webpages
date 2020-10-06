@@ -1,0 +1,15 @@
+<div id="utility" role="navigation">
+	<h2 class="offscreen" accesskey="n">Navigation Menu</h2>
+	<ul id="nav-secondary">
+		<#SWITCHMODE headerText="<li class='active'>" footerText="</li>">
+		<li class="active"><a href="<#ACTION action="10" form="10">">Main Menu</a></li>
+		<li class="active"><a href="<#ACTION action="10" form="60" ValueType="Lookup" Value="CourseID">">Course Home</a></li>
+		<li class="active dropdown"><span class="nav-section" tabindex="0">Item Tools</span>
+			<ul class="dropdown-content">
+				<li><a href="<#ACTION action="10" form="2" value="IRFMenu">&CourseID=<#COURSE field="CourseID">">Add Reserve Items</a></li>
+				<li><a href="<#ACTION action="10" form="115" value="CourseID" valuetype="Lookup">">Reserve Item Usage</a></li>
+			</ul>
+		</li>
+		<#INCLUDE filename="include_studentmenu.html" restriction="UserType:Student">
+	</ul>
+</div>

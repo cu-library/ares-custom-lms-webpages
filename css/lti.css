@@ -1,0 +1,83 @@
+
+#utility {
+    width: auto;
+    position: static;
+    padding-bottom: 50px;
+}
+
+#nav-secondary {
+    margin-top: 0px;
+}
+
+#nav-secondary ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+#nav-secondary li.active {
+    float: left;
+    width: 20%;
+    padding: 0px;
+    margin: 0px;
+    height: 40px;
+}
+
+#nav-secondary li.active a:link, #nav-secondary li.active span {
+    display: inline-block;
+    padding: 5px;
+    text-decoration: none;
+}
+
+#nav-secondary li.active:hover, #nav-secondary .dropdown-content a:hover {
+    background-color: #FEE;
+    cursor: pointer;
+}
+
+#nav-secondary li.dropdown {
+    display: inline-block;
+}
+
+#nav-secondary .dropdown-content {
+    display: none;
+    position: absolute;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+#nav-secondary .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+#nav-secondary .dropdown:hover .dropdown-content {
+    display: block;
+}
+
+#nav-secondary a, #nav-secondary .nav-section, #nav-secondary a:hover, #nav-secondary li.active li a, #nav-secondary li.active li a:link, #nav-secondary li.active li a:visited {
+    background: none;
+}
+
+#nav-secondary li .dropdown-content li {
+    float: none;
+}
+
+#nav-secondary li.active li a, #nav-secondary li.active li a:link {
+    width: auto;
+    padding: 5px;
+    border-bottom: 1px solid #999;
+}
+
+
+#content {
+    margin: 0px;
+}
+
+body {
+    padding: 20px;
+}
