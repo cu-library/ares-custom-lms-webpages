@@ -1,12 +1,12 @@
 /*
- * Clicking on a row of a .student-table or a .instructor-table navigates to
- * the href of the first a.row-click in that row. This script takes the
+ * Clicking on a row of a .student-table or a .instructor-table navigates to 
+ * the href of the first a.row-click in that row. This script takes the 
  * anchor's original target into account, defaulting to _self.
 */
 $(document).ready(function() {
     $('.instructor-table, .student-table').find('tbody > tr').find('td, td *').click(
         function(event) {
-
+            
             var element = $(this);
             var parentRow = element.parents('tr').first();
             var link = parentRow.find('a.row-click').first();
@@ -20,8 +20,8 @@ $(document).ready(function() {
                 !element.is('a') &&
                 !element.is('input') &&
                 !element.is('textarea') &&
-
-                // Ignore cells that have input boxes, which are likely table
+                
+                // Ignore cells that have input boxes, which are likely table 
                 // column filters.
                 !element.find('input').length &&
                 !element.find('textarea').length;
